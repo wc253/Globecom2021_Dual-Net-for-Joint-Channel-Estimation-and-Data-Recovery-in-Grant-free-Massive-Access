@@ -121,12 +121,12 @@ def bernoulli_gaussian_trial(L):
         writer.close()
         with open(os.path.join(os.getcwd(),'train_info.txt'),'w') as dataset_info:
           dataset_info.write('y'+','+str(M)+','+str(L)+'\n')
-          dataset_info.write('x' + ','+str(L)+',' + str(N) + '\n')
+          dataset_info.write('x' + ','+str(N)+',' + str(L) + '\n')
     if not os.path.exists(os.path.join(os.getcwd(), 'xval.npy')):
         print('preparing validating dataset\n')
         data=io.loadmat('/data/data0')
-        prob.xval=np.transpose(data['X'].astype(np.float32))
-        prob.yval =data['Y'].astype(np.float32)
+        prob.xval=np.transpose(data['x'].astype(np.float32))
+        prob.yval =data['y'].astype(np.float32)
         np.save('xval.npy', prob.xval)
         np.save('yval.npy', prob.yval)
 
